@@ -3,8 +3,10 @@
 
 const PHOTOS_URL = 'https://jsonplaceholder.typicode.com/photos?_limit=10';
 
-const photoTemplate = document.getElementById('photoTemplate').innerHTML;
-const ringElem = document.getElementById('ring');
+
+const photoTemplate = $('#photoTemplate').html();
+const ringElem = $('#ring');
+
 
 
 let gallery = [];
@@ -35,11 +37,11 @@ function getPhotoHtmlElem(photo) {
 function renderPhoto(photo) {
   const photoHtml = getPhotoHtmlElem(photo);
 
-  ringElem.insertAdjacentHTML('beforeend', photoHtml);
+  ringElem.append(photoHtml);
 }
 
 function renderGallery(gallery) {
-  gallery.forEach((photo) => renderPhoto(photo));
+  $.each(gallery, (index, photo) => renderPhoto(photo));
 }
 
 
